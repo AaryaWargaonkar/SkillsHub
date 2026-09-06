@@ -1,0 +1,353 @@
+.certificate-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background: #f5f6f8;
+}
+
+.certificate {
+  position: relative;
+  width: 100%;
+  max-width: 1050px;
+  min-height: 600px;
+  padding: 50px 70px;
+  background: #fff;
+  border: 10px double #c9a227;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.certificate::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid #d8b84c;
+  pointer-events: none;
+}
+
+.certificate-content {
+  position: relative;
+  z-index: 1;
+}
+
+.certificate-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #222;
+}
+
+.certificate-subtitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  letter-spacing: 4px;
+  color: #8a6d1d;
+  margin-top: 2px;
+}
+
+.certificate-line {
+  width: 90px;
+  height: 3px;
+  background: #c9a227;
+  margin: 16px auto 22px;
+}
+
+.presented-text {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 6px;
+}
+
+.student-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: #8a6d1d;
+  margin: 0 0 10px;
+}
+
+.completion-text {
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 6px;
+}
+
+.course-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 8px;
+}
+
+.achievement-text {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.certificate-details {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 28px;
+}
+
+.certificate-details div {
+  min-width: 180px;
+}
+
+.certificate-details span {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.certificate-details strong {
+  display: block;
+  font-size: 15px;
+  color: #222;
+}
+
+.platform-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.platform-name strong {
+  font-size: 19px;
+  color: #8a6d1d;
+  letter-spacing: 1px;
+}
+
+.platform-name span {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.certificate button {
+  position: relative;
+  z-index: 2;
+  padding: 9px 24px;
+  font-weight: 600;
+}
+
+.certificate-navbar {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .certificate-page {
+    padding: 25px 12px;
+  }
+
+  .certificate {
+    padding: 40px 25px;
+  }
+
+  .certificate-title {
+    font-size: 32px;
+  }
+
+  .certificate-subtitle {
+    font-size: 15px;
+  }
+
+  .student-name {
+    font-size: 27px;
+  }
+
+  .course-name {
+    font-size: 24px;
+  }
+
+  .certificate-details {
+    gap: 30px;
+  }
+}
+
+
+/* =========================
+   PRINT
+   ========================= */
+
+@media print {
+
+  /* Hide navbar and download button */
+  .certificate-navbar,
+  .no-print {
+    display: none !important;
+  }
+
+  /* A4 Landscape */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /*
+    Full A4 page
+  */
+  .certificate-page {
+    width: 297mm !important;
+    height: 210mm !important;
+
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 10mm !important;
+
+    box-sizing: border-box !important;
+
+    display: block !important;
+
+    background: white !important;
+  }
+
+  /*
+    Certificate border
+  */
+  .certificate {
+    position: relative;
+
+    width: 277mm !important;
+    height: 190mm !important;
+
+    max-width: none !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 38px 60px !important;
+
+    box-sizing: border-box !important;
+
+    background: white !important;
+
+    border: 10px double #c9a227 !important;
+
+    box-shadow: none !important;
+
+    text-align: center !important;
+  }
+
+  .certificate::before {
+    inset: 18px !important;
+    border: 1px solid #d8b84c !important;
+  }
+
+
+  /* =========================
+     PRINT CONTENT SIZE
+     ========================= */
+
+  .certificate-title {
+    font-size: 50px !important;
+    letter-spacing: 6px !important;
+  }
+
+  .certificate-subtitle {
+    font-size: 21px !important;
+    letter-spacing: 5px !important;
+    margin-top: 4px !important;
+  }
+
+  .certificate-line {
+    width: 100px !important;
+    height: 3px !important;
+    margin: 20px auto 28px !important;
+  }
+
+  .presented-text {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .student-name {
+    font-size: 42px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .completion-text {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .course-name {
+    font-size: 34px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .achievement-text {
+    font-size: 16px !important;
+  }
+
+
+  /* =========================
+     DETAILS
+     ========================= */
+
+  .certificate-details {
+    gap: 130px !important;
+    margin-top: 34px !important;
+  }
+
+  .certificate-details div {
+    min-width: 200px !important;
+  }
+
+  .certificate-details span {
+    font-size: 13px !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .certificate-details strong {
+    font-size: 17px !important;
+  }
+
+
+  /* =========================
+     SKILLSHUB
+     ========================= */
+
+  .platform-name {
+    margin-top: 38px !important;
+  }
+
+  .platform-name strong {
+    font-size: 23px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .platform-name span {
+    font-size: 12px !important;
+    margin-top: 3px !important;
+  }
+}
