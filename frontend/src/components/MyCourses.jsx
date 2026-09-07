@@ -12,7 +12,7 @@ const MyCourses = () => {
     if (!studentId) return;
 
     axios
-      .get(`http://localhost:4000/enrollment/my-courses/${studentId}`)
+      .get(`${import.meta.env.VITE_API_URL}/enrollment/my-courses/${studentId}`)
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);
