@@ -58,7 +58,7 @@ const Profile = () => {
         localStorage.removeItem("token");
 
         alert("Profile updated successfully. Please login again.");
-        navigate("/login");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
