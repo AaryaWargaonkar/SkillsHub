@@ -26,7 +26,7 @@ const ManageQuiz = () => {
             correctAnswer
         }
 
-        axios.post("http://localhost:4000/quiz/add", data)
+        axios.post(`${import.meta.env.VITE_API_URL}/quiz/add`, data)
             .then(() => {
                 alert("Question added successfully")
                 setQuestion("")
