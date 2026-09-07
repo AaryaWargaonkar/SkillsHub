@@ -35,7 +35,7 @@ const Add = () => {
     const instructorId = localStorage.getItem("userId");
 
     axios
-      .post("http://localhost:4000/add", { ...item, instructorId })
+      .post(`${import.meta.env.VITE_API_URL}/add`, { ...item, instructorId })
       .then(() => navigate("/home"))
       .catch((err) => console.log(err));
   };
