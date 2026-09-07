@@ -13,7 +13,7 @@ const Show = () => {
     const instructorId=localStorage.getItem("userId")
 
     axios
-      .get(`http://localhost:4000/instructor-show/${id}?instructorId=${instructorId}`)
+      .get(`${import.meta.env.VITE_API_URL}/instructor-show/${id}?instructorId=${instructorId}`)
       .then((res)=>setItem(res.data))
       .catch((err)=>{
         console.log(err)
@@ -27,7 +27,7 @@ const Show = () => {
 
     if(window.confirm("Are you sure you want to delete this course?")){
       axios
-        .delete(`http://localhost:4000/delete/${id}?instructorId=${instructorId}`)
+        .delete(`${import.meta.env.VITE_API_URL}/delete/${id}?instructorId=${instructorId}`)
         .then((res)=>{
           alert(res.data.message)
           navigate("/home")
