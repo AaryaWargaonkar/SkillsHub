@@ -42,7 +42,7 @@ const MyBadges = () => {
     useEffect(() => {
         if (!studentId) return
 
-        axios.get(`http://localhost:4000/badge/my-badges/${studentId}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/badge/my-badges/${studentId}`)
             .then((res) => setBadges(res.data))
             .catch((err) => console.log(err))
     }, [studentId])
