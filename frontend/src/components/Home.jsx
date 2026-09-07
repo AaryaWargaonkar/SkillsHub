@@ -11,7 +11,7 @@ const Home = () => {
     const instructorId = localStorage.getItem("userId");
 
     axios
-      .get(`http://localhost:4000/display?instructorId=${instructorId}`)
+      .get(`${import.meta.env.VITE_API_URL}/display?instructorId=${instructorId}`)
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   }, []);
