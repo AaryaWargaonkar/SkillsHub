@@ -49,7 +49,7 @@ const Profile = () => {
     };
 
     axios
-      .put(`http://localhost:4000/user/update-profile/${userId}`, data)
+      .put(`${import.meta.env.VITE_API_URL}/user/update-profile/${userId}`, data)
       .then((res) => {
         localStorage.removeItem("userId");
         localStorage.removeItem("uname");
