@@ -28,6 +28,6 @@ app.use("/payment", paymentRouter);
 app.use("/quiz", quizRouter)
 app.use("/badge", badgeRouter)
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, "0.0.0.0", () => {
     console.log("running...");
 });
