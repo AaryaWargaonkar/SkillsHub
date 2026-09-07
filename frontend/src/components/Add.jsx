@@ -36,7 +36,7 @@ const Add = () => {
 
     axios
       .post("http://localhost:4000/add", { ...item, instructorId })
-      .then(() => navigate("/"))
+      .then(() => navigate("/home"))
       .catch((err) => console.log(err));
   };
 
@@ -188,7 +188,7 @@ const Add = () => {
 
                   <NavLink
                     className="btn btn-secondary me-3 my-2"
-                    to="/"
+                    to="/home"
                     role="button"
                   >
                     Back to Home
