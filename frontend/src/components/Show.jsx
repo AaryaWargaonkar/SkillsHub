@@ -18,7 +18,7 @@ const Show = () => {
       .catch((err)=>{
         console.log(err)
         alert(err.response?.data?.message || "You cannot view this course")
-        navigate("/")
+        navigate("/home")
       })
   },[id,navigate])
 
@@ -30,7 +30,7 @@ const Show = () => {
         .delete(`http://localhost:4000/delete/${id}?instructorId=${instructorId}`)
         .then((res)=>{
           alert(res.data.message)
-          navigate("/")
+          navigate("/home")
         })
         .catch((err)=>{
           console.log(err)
@@ -70,7 +70,7 @@ const Show = () => {
                   <p className="fs-5"><strong>Level:</strong> {item.level}</p>
                   <p className="fs-5 mb-4"><strong>Students Enrolled:</strong> {item.studentCount}</p>
 
-                  <NavLink className="btn btn-secondary me-2" to="/">
+                  <NavLink className="btn btn-secondary me-2" to="/home">
                     Back to Home
                   </NavLink>
 
