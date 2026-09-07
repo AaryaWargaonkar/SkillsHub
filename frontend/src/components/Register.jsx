@@ -10,7 +10,7 @@ const Register = () => {
   const handleSubmit=(e)=>{
     e.preventDefault()
 
-    axios.post("http://localhost:4000/user/register",user)
+    axios.post(`${import.meta.env.VITE_API_URL}/user/register`,user)
     .then(()=>navigate("/login"))
     .catch((err)=>{
       console.log(err)
