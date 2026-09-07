@@ -17,7 +17,7 @@ const AddLesson = () => {
 
   const fetchLessons = () => {
     axios
-      .get(`http://localhost:4000/lesson/course/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/lesson/course/${id}`)
       .then((res) => setLessons(res.data))
       .catch((err) => console.log(err))
   }
@@ -30,7 +30,7 @@ const AddLesson = () => {
     e.preventDefault()
 
     axios
-      .post("http://localhost:4000/lesson/add", {
+      .post(`${import.meta.env.VITE_API_URL}/lesson/add`, {
         courseId: id,
         title: lesson.title,
         description: lesson.description,
@@ -58,7 +58,7 @@ const AddLesson = () => {
   const handleDelete = (lessonId) => {
     if (window.confirm("Are you sure you want to delete this lesson?")) {
       axios
-        .delete(`http://localhost:4000/lesson/delete/${lessonId}`)
+        .delete(`${import.meta.env.VITE_API_URL}/lesson/delete/${lessonId}`)
         .then((res) => {
           alert(res.data.message)
           fetchLessons()
