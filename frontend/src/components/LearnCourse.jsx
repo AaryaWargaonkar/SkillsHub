@@ -48,7 +48,7 @@ const LearnCourse = () => {
     loadYouTubeAPI();
 
     axios
-      .get(`http://localhost:4000/lesson/course/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/lesson/course/${id}`)
       .then((res) => {
         setLessons(res.data);
       })
@@ -59,7 +59,7 @@ const LearnCourse = () => {
     if (!studentId) return;
 
     axios
-      .get(`http://localhost:4000/enrollment/my-courses/${studentId}`)
+      .get(`${import.meta.env.VITE_API_URL}/enrollment/my-courses/${studentId}`)
       .then((res) => {
         const enrollment = res.data.find(
           (item) => String(item.courseId) === String(id)
@@ -389,22 +389,7 @@ const LearnCourse = () => {
         const wallTimeDifference =
           (Date.now() - data.lastWallTime) / 1000;
 
-        /*
-          The interval runs every 250ms instead of every 1 second.
-
-          This makes tracking much more accurate because the YouTube
-          currentTime value is checked more frequently.
-
-          At 1x:
-          ~0.25 video seconds are normally added.
-
-          At 2x:
-          ~0.50 video seconds are normally added.
-
-          Small browser/timer delays are allowed.
-
-          A very large jump is treated as seeking and is not counted.
-        */
+       
         const expectedDifference =
           Math.max(wallTimeDifference, 0) * playbackRate;
 
@@ -503,7 +488,7 @@ const LearnCourse = () => {
 
     axios
       .put(
-        "http://localhost:4000/enrollment/complete-lesson",
+  `${import.meta.env.VITE_API_URL}/enrollment/complete-lesson`,
         {
           studentId,
           lessonId,
