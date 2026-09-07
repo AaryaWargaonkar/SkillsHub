@@ -12,7 +12,7 @@ const Certificate = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/show/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/show/${id}`)
       .then((res) => {
         setCourse(res.data);
       })
