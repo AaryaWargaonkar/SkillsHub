@@ -15,7 +15,7 @@ const EditLesson = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/lesson/show/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/lesson/show/${id}`)
       .then((res) => {
         setLesson({
           title: res.data.title,
@@ -34,7 +34,7 @@ const EditLesson = () => {
     e.preventDefault()
 
     axios
-      .put(`http://localhost:4000/lesson/update/${id}`, lesson)
+      .put(`${import.meta.env.VITE_API_URL}/lesson/update/${id}`, lesson)
       .then((res) => {
         alert(res.data.message)
         navigate(-1)
