@@ -18,7 +18,7 @@ const StudentCourseDetails = () => {
   const studentId = localStorage.getItem("userId")
 
   const fetchReviews = () => {
-    axios.get(`http://localhost:4000/review/course/${id}`)
+   axios.get(`${import.meta.env.VITE_API_URL}/review/course/${id}`)
       .then((res) => {
         setReviews(res.data.reviews)
         setAverageRating(res.data.averageRating)
@@ -27,14 +27,14 @@ const StudentCourseDetails = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/show/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/show/${id}`)
       .then((res) => setItem(res.data))
       .catch((err) => console.log(err))
 
     fetchReviews()
 
     if (studentId) {
-      axios.get(`http://localhost:4000/enrollment/my-courses/${studentId}`)
+      axios.get(`${import.meta.env.VITE_API_URL}/enrollment/my-courses/${studentId}`)
         .then((res) => {
           const enrolled = res.data.some(
             (course) => String(course.courseId) === String(id)
@@ -46,7 +46,7 @@ const StudentCourseDetails = () => {
   }, [id])
 
   const enrollFreeCourse = () => {
-    axios.post("http://localhost:4000/enrollment/enroll", {
+    axios.post(`${import.meta.env.VITE_API_URL}/enrollment/enroll`, {
       studentId: studentId,
       courseId: id
     })
@@ -62,7 +62,7 @@ const StudentCourseDetails = () => {
   const handlePayment = () => {
     setPaymentLoading(true)
 
-    axios.post("http://localhost:4000/payment/create-order", {
+    axios.post(`${import.meta.env.VITE_API_URL}/payment/create-order`, {
       studentId: studentId,
       courseId: id
     })
@@ -77,7 +77,7 @@ const StudentCourseDetails = () => {
           description: item.courseName,
           order_id: orderId,
           handler: function (response) {
-            axios.post("http://localhost:4000/payment/verify", {
+           axios.post(`${import.meta.env.VITE_API_URL}/payment/verify`, {
               studentId: studentId,
               courseId: id,
               razorpay_order_id: response.razorpay_order_id,
@@ -153,7 +153,7 @@ const StudentCourseDetails = () => {
     }
 
     if (editingReview) {
-      axios.put(`http://localhost:4000/review/update/${editingReview}`, {
+      axios.put(`${import.meta.env.VITE_API_URL}/review/update/${editingReview}`, {
         studentId: studentId,
         rating: rating,
         comment: comment
@@ -169,7 +169,7 @@ const StudentCourseDetails = () => {
           alert(err.response?.data?.message || "Failed to update review")
         })
     } else {
-      axios.post("http://localhost:4000/review/add", {
+      axios.post(`${import.meta.env.VITE_API_URL}/review/add`, {
         studentId: studentId,
         courseId: id,
         rating: rating,
@@ -199,7 +199,7 @@ const StudentCourseDetails = () => {
       return
     }
 
-    axios.delete(`http://localhost:4000/review/delete/${reviewId}`, {
+    axios.delete(`${import.meta.env.VITE_API_URL}/review/delete/${reviewId}`, {
       data: {
         studentId: studentId
       }
