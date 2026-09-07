@@ -13,7 +13,7 @@ const InstructorReviews = () => {
 
   const fetchReviews = () => {
     axios
-      .get(`http://localhost:4000/review/course/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/review/course/${id}`)
       .then((res) => {
         setReviews(res.data.reviews);
         setAverageRating(res.data.averageRating);
@@ -35,7 +35,7 @@ const InstructorReviews = () => {
     }
 
     axios
-      .put(`http://localhost:4000/review/reply/${reviewId}`, {
+      .put(`${import.meta.env.VITE_API_URL}/review/reply/${reviewId}`, {
         instructorId: instructorId,
         reply: reply
       })
