@@ -15,7 +15,7 @@ const Edit = () => {
     const instructorId = localStorage.getItem("userId");
 
     axios
-      .get(`http://localhost:4000/show/${id}?instructorId=${instructorId}`)
+      .get(`${import.meta.env.VITE_API_URL}/show/${id}?instructorId=${instructorId}`)
       .then((res) => {
         setItem(res.data);
         setIsFree(Number(res.data.price) === 0);
@@ -40,7 +40,7 @@ const Edit = () => {
     const instructorId = localStorage.getItem("userId");
 
     axios
-      .put(`http://localhost:4000/update/${id}`, {
+      .put(`${import.meta.env.VITE_API_URL}/update/${id}`, {
         ...item,
         instructorId
       })
