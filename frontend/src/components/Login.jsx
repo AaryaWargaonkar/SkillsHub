@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:4000/user/login", user)
+      .post(`${import.meta.env.VITE_API_URL}/user/login`, user)
       .then((res) => {
         const loggedInUser = res.data.user;
 
