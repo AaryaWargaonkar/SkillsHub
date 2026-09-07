@@ -12,7 +12,7 @@ const StudentQuiz = () => {
     const [score, setScore] = useState(0)
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/quiz/lesson/${lessonId}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/quiz/lesson/${lessonId}`)
             .then((res) => setQuiz(res.data))
             .catch((err) => console.log(err))
     }, [lessonId])
