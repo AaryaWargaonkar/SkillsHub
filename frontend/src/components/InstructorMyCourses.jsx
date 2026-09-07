@@ -9,7 +9,7 @@ const InstructorMyCourses = () => {
     const instructorId = localStorage.getItem("userId");
 
     axios
-      .get(`http://localhost:4000/my-courses/${instructorId}`)
+      .get(`${import.meta.env.VITE_API_URL}/my-courses/${instructorId}`)
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -20,7 +20,7 @@ const InstructorMyCourses = () => {
     if (window.confirm("Are you sure you want to delete this course?")) {
       axios
         .delete(
-          `http://localhost:4000/delete/${id}?instructorId=${instructorId}`,
+         `${import.meta.env.VITE_API_URL}/delete/${id}?instructorId=${instructorId}`,
         )
         .then((res) => {
           alert(res.data.message);
